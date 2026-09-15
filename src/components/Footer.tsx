@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { 
   Phone, 
@@ -12,7 +12,8 @@ import {
   Heart,
   Calendar,
   Send,
-  Sparkles
+  Sparkles,
+  CheckCircle2
 } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -21,6 +22,16 @@ export default function Footer() {
   const footerRef = useRef<HTMLElement | null>(null);
   const bannerRef = useRef<HTMLDivElement | null>(null);
   const gridRef = useRef<HTMLDivElement | null>(null);
+
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail || !newsletterEmail.includes("@")) return;
+    setNewsletterSubscribed(true);
+    setNewsletterEmail("");
+  };
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -118,7 +129,7 @@ export default function Footer() {
               <span>Sat – Thu: 4:00 PM – 9:30 PM</span>
             </div>
             <Link
-              href="#schedule"
+              href="/appointment"
               className="bg-[#2B64EC] hover:bg-[#1e52d1] active:scale-[0.98] text-white font-medium text-sm px-7 py-3 rounded-full transition-all duration-200 shadow-md shadow-blue-500/25 inline-flex items-center gap-2 hover:shadow-lg"
             >
               <Calendar className="w-4 h-4" />
@@ -171,7 +182,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="text-slate-500 hover:text-[#2B64EC] transition-colors">
+                <Link href="/services" className="text-slate-500 hover:text-[#2B64EC] transition-colors">
                   Dental Treatments
                 </Link>
               </li>
@@ -186,8 +197,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#schedule" className="text-slate-500 hover:text-[#2B64EC] transition-colors">
-                  Schedule Call
+                <Link href="/appointment" className="text-slate-500 hover:text-[#2B64EC] transition-colors">
+                  Book Appointment
                 </Link>
               </li>
             </ul>
@@ -199,20 +210,30 @@ export default function Footer() {
               Key Treatments
             </h4>
             <ul className="space-y-2.5 text-sm">
-              <li className="text-slate-500 hover:text-[#2B64EC] transition-colors flex items-center gap-2">
-                <ArrowRight className="w-3 h-3 text-[#2B64EC]" /> Dental Implants & Crowns
+              <li>
+                <Link href="/services/implant" className="text-slate-500 hover:text-[#2B64EC] transition-colors flex items-center gap-2">
+                  <ArrowRight className="w-3 h-3 text-[#2B64EC]" /> Dental Implants & Crowns
+                </Link>
               </li>
-              <li className="text-slate-500 hover:text-[#2B64EC] transition-colors flex items-center gap-2">
-                <ArrowRight className="w-3 h-3 text-[#2B64EC]" /> Laser Teeth Whitening
+              <li>
+                <Link href="/services/whitening" className="text-slate-500 hover:text-[#2B64EC] transition-colors flex items-center gap-2">
+                  <ArrowRight className="w-3 h-3 text-[#2B64EC]" /> Laser Teeth Whitening
+                </Link>
               </li>
-              <li className="text-slate-500 hover:text-[#2B64EC] transition-colors flex items-center gap-2">
-                <ArrowRight className="w-3 h-3 text-[#2B64EC]" /> Painless Root Canal
+              <li>
+                <Link href="/services/root-canal" className="text-slate-500 hover:text-[#2B64EC] transition-colors flex items-center gap-2">
+                  <ArrowRight className="w-3 h-3 text-[#2B64EC]" /> Painless Root Canal
+                </Link>
               </li>
-              <li className="text-slate-500 hover:text-[#2B64EC] transition-colors flex items-center gap-2">
-                <ArrowRight className="w-3 h-3 text-[#2B64EC]" /> Invisalign & Aligners
+              <li>
+                <Link href="/services/cosmetic" className="text-slate-500 hover:text-[#2B64EC] transition-colors flex items-center gap-2">
+                  <ArrowRight className="w-3 h-3 text-[#2B64EC]" /> Cosmetic Makeover
+                </Link>
               </li>
-              <li className="text-slate-500 hover:text-[#2B64EC] transition-colors flex items-center gap-2">
-                <ArrowRight className="w-3 h-3 text-[#2B64EC]" /> Pediatric Dental Care
+              <li>
+                <Link href="/services/pediatric" className="text-slate-500 hover:text-[#2B64EC] transition-colors flex items-center gap-2">
+                  <ArrowRight className="w-3 h-3 text-[#2B64EC]" /> Pediatric Dental Care
+                </Link>
               </li>
             </ul>
           </div>
@@ -238,20 +259,30 @@ export default function Footer() {
               <p className="text-xs text-slate-700 font-semibold mb-2">
                 Get monthly oral health & smile tips:
               </p>
-              <form onSubmit={(e) => e.preventDefault()} className="flex items-center gap-2">
-                <input
-                  type="email"
-                  placeholder="Your email address"
-                  className="w-full bg-white border border-slate-200 rounded-full px-4 py-2 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#2B64EC] focus:ring-2 focus:ring-blue-500/10 transition-all shadow-xs"
-                />
-                <button
-                  type="submit"
-                  aria-label="Subscribe"
-                  className="bg-[#2B64EC] hover:bg-[#1e52d1] active:scale-[0.96] text-white p-2.5 rounded-full shrink-0 transition-all duration-200 shadow-sm hover:shadow-md"
-                >
-                  <Send className="w-3.5 h-3.5" />
-                </button>
-              </form>
+              {newsletterSubscribed ? (
+                <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-2 text-xs font-medium text-emerald-800 animate-in fade-in">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <span>Subscribed! Thank you for joining.</span>
+                </div>
+              ) : (
+                <form onSubmit={handleNewsletterSubmit} className="flex items-center gap-2">
+                  <input
+                    type="email"
+                    required
+                    value={newsletterEmail}
+                    onChange={(e) => setNewsletterEmail(e.target.value)}
+                    placeholder="Your email address"
+                    className="w-full bg-white border border-slate-200 rounded-full px-4 py-2 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-[#2B64EC] focus:ring-2 focus:ring-blue-500/10 transition-all shadow-xs"
+                  />
+                  <button
+                    type="submit"
+                    aria-label="Subscribe"
+                    className="bg-[#2B64EC] hover:bg-[#1e52d1] active:scale-[0.96] text-white p-2.5 rounded-full shrink-0 transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
+                  >
+                    <Send className="w-3.5 h-3.5" />
+                  </button>
+                </form>
+              )}
             </div>
           </div>
 
@@ -261,10 +292,16 @@ export default function Footer() {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>© {new Date().getFullYear()} Smile Bright Dental Practice. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <Link href="#privacy" className="hover:text-slate-800 transition-colors">
+            <Link
+              href="/privacy"
+              className="hover:text-slate-800 transition-colors"
+            >
               Privacy Policy
             </Link>
-            <Link href="#terms" className="hover:text-slate-800 transition-colors">
+            <Link
+              href="/terms"
+              className="hover:text-slate-800 transition-colors"
+            >
               Terms of Care
             </Link>
             <span className="flex items-center gap-1 text-slate-400">
@@ -277,3 +314,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+

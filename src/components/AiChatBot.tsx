@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 import { 
   X, 
   ArrowUp, 
@@ -108,7 +109,7 @@ export default function AiChatBot() {
           },
           action: {
             label: "View Full Profile",
-            href: "#about",
+            href: "/#about",
           },
         };
       } else if (lower.includes("hour") || lower.includes("time") || lower.includes("when") || lower.includes("location") || lower.includes("where") || lower.includes("chamber")) {
@@ -126,7 +127,7 @@ export default function AiChatBot() {
           },
           action: {
             label: "Book an Appointment",
-            href: "#schedule",
+            href: "/appointment",
           },
         };
       } else if (lower.includes("implant") || lower.includes("cost") || lower.includes("price") || lower.includes("fee")) {
@@ -144,7 +145,7 @@ export default function AiChatBot() {
           },
           action: {
             label: "Book 3D Implant Assessment",
-            href: "#schedule",
+            href: "/appointment?service=implant",
           },
         };
       } else if (lower.includes("whiten") || lower.includes("pain") || lower.includes("laser") || lower.includes("hurt")) {
@@ -153,8 +154,8 @@ export default function AiChatBot() {
           sender: "ai",
           text: "Our laser teeth whitening is completely painless and gentle on sensitive teeth, brightening your smile by up to 8 shades in a single 45-minute visit.",
           action: {
-            label: "Explore Services",
-            href: "#services",
+            label: "Explore Teeth Whitening",
+            href: "/services/whitening",
           },
         };
       } else if (lower.includes("emergency") || lower.includes("pain") || lower.includes("urgent") || lower.includes("broken")) {
@@ -164,7 +165,7 @@ export default function AiChatBot() {
           text: "If you have severe swelling or acute tooth pain, same-day priority appointments are reserved for emergency triage.",
           action: {
             label: "Book Priority Emergency Slot",
-            href: "#schedule",
+            href: "/appointment?service=exams",
           },
         };
       } else {
@@ -174,7 +175,7 @@ export default function AiChatBot() {
           text: "I can help you explore treatments, check chamber availability, or book a consultation with Dr. Shelley Robinson.",
           action: {
             label: "Book an Appointment",
-            href: "#schedule",
+            href: "/appointment",
           },
         };
       }
@@ -193,7 +194,7 @@ export default function AiChatBot() {
   return (
     <>
       {/* Floating Minimal Launcher (No Background, Black ThinkingOrb) */}
-      <div className="fixed bottom-6 right-6 z-50 flex items-center">
+      <div className={`fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-50 flex items-center ${isOpen ? "hidden sm:flex" : "flex"}`}>
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
@@ -201,29 +202,29 @@ export default function AiChatBot() {
           className="relative group flex items-center justify-center cursor-pointer bg-transparent border-none p-0 outline-none transition-transform duration-200 hover:scale-110 active:scale-95"
         >
           {isOpen ? (
-            <div className="w-12 h-12 bg-black text-white rounded-full flex items-center justify-center shadow-lg transition-all">
+            <div className="w-11 h-11 sm:w-12 sm:h-12 bg-black text-white rounded-full flex items-center justify-center shadow-lg transition-all">
               <X className="w-5 h-5" />
             </div>
           ) : (
-            <div className="w-16 h-16 flex items-center justify-center bg-transparent">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center bg-transparent">
               <ThinkingOrb state={orbState} size={64} theme="light" />
             </div>
           )}
         </button>
       </div>
 
-      {/* ChatGPT Style Minimalist Chat Window */}
+      {/* ChatGPT Style Minimalist Chat Window (Full Screen on Mobile) */}
       {isOpen && (
-        <div className="fixed bottom-24 sm:bottom-24 right-4 sm:right-6 z-50 w-[calc(100vw-32px)] sm:w-[410px] max-h-[640px] h-[82vh] bg-white rounded-2xl border border-slate-200/90 shadow-2xl shadow-slate-900/10 flex flex-col overflow-hidden animate-in fade-in duration-150">
+        <div className="fixed inset-0 sm:inset-auto sm:bottom-24 sm:right-6 z-50 w-full sm:w-[410px] h-full sm:h-[78vh] sm:max-h-[580px] bg-white rounded-none sm:rounded-2xl sm:border sm:border-slate-200/90 sm:shadow-2xl sm:shadow-slate-900/10 flex flex-col overflow-hidden animate-in fade-in duration-150">
           
           {/* Header */}
-          <div className="px-4 py-3 bg-white border-b border-slate-100 flex items-center justify-between shrink-0">
+          <div className="px-4 py-3.5 sm:py-3 bg-white border-b border-slate-100 flex items-center justify-between shrink-0">
             <div className="flex items-center gap-2.5">
               <div className="w-6 h-6 flex items-center justify-center">
                 <ThinkingOrb state={orbState} size={20} theme="light" />
               </div>
               <div className="flex items-center gap-2">
-                <span className="font-semibold text-[13.5px] text-[#0d0d0d] tracking-tight">
+                <span className="font-semibold text-[14px] sm:text-[13.5px] text-[#0d0d0d] tracking-tight">
                   SmileAI
                 </span>
                 <span className="text-[11px] font-normal text-slate-400">
@@ -232,12 +233,12 @@ export default function AiChatBot() {
               </div>
             </div>
 
-            <div className="flex items-center gap-0.5">
+            <div className="flex items-center gap-1">
               <button
                 type="button"
                 onClick={handleReset}
                 title="New chat"
-                className="p-1.5 text-slate-500 hover:text-black rounded-lg hover:bg-slate-100 transition-colors"
+                className="p-2 sm:p-1.5 text-slate-500 hover:text-black rounded-lg hover:bg-slate-100 transition-colors"
               >
                 <RotateCcw className="w-4 h-4" />
               </button>
@@ -245,15 +246,15 @@ export default function AiChatBot() {
                 type="button"
                 onClick={() => setIsOpen(false)}
                 title="Close chat"
-                className="p-1.5 text-slate-500 hover:text-black rounded-lg hover:bg-slate-100 transition-colors"
+                className="p-2 sm:p-1.5 text-slate-600 hover:text-black rounded-lg hover:bg-slate-100 transition-colors"
               >
-                <X className="w-4 h-4" />
+                <X className="w-5 h-5 sm:w-4 sm:h-4" />
               </button>
             </div>
           </div>
 
           {/* Messages Body */}
-          <div className="flex-1 p-4 sm:p-5 overflow-y-auto space-y-5 bg-white text-[13.5px]">
+          <div className="flex-1 p-4 sm:p-5 overflow-y-auto space-y-5 bg-white text-[14px] sm:text-[13.5px]">
             {messages.map((msg) => (
               <div
                 key={msg.id}
@@ -287,15 +288,15 @@ export default function AiChatBot() {
                     {/* Action Button */}
                     {msg.action && (
                       <div className="pt-1">
-                        <a
+                        <Link
                           href={msg.action.href}
                           onClick={() => setIsOpen(false)}
-                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-black bg-slate-100 hover:bg-slate-200 px-3.5 py-1.5 rounded-full transition-colors"
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-black bg-slate-100 hover:bg-slate-200 px-3.5 py-1.5 rounded-full transition-colors cursor-pointer"
                         >
                           <Calendar className="w-3.5 h-3.5" />
                           {msg.action.label}
                           <ChevronRight className="w-3.5 h-3.5" />
-                        </a>
+                        </Link>
                       </div>
                     )}
                   </div>
@@ -333,7 +334,7 @@ export default function AiChatBot() {
           )}
 
           {/* ChatGPT Style Input Container */}
-          <div className="p-3 sm:p-4 bg-white border-t border-slate-100 shrink-0">
+          <div className="p-3 sm:p-4 bg-white border-t border-slate-100 shrink-0 pb-[max(12px,env(safe-area-inset-bottom))]">
             <form
               onSubmit={(e) => {
                 e.preventDefault();

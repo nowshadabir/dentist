@@ -33,7 +33,7 @@ export default function Home() {
         {/* Dentist Showcase Section (Dr. Shelley Robinson) */}
         <DentistShowcase />
 
-        {/* Services Section with 3D Card Reveals */}
+        {/* Services Section */}
         <Services />
 
         {/* Professional Clinical Showcase (Zoom Slider) */}
@@ -42,7 +42,7 @@ export default function Home() {
         {/* Patient Stories & Animated Metrics Section */}
         <Testimonials />
 
-        {/* Footer with Consultation Banner */}
+        {/* Footer with Consultation Banner & Quick Access */}
         <Footer />
 
         {/* Interactive AI Agent Live Chatbot */}
@@ -51,3 +51,5 @@ export default function Home() {
     </SmoothScrollProvider>
   );
 }
+
+

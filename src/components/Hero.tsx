@@ -14,7 +14,7 @@ export default function Hero() {
   const leftImageRef = useRef<HTMLDivElement | null>(null);
   const rightImageContainerRef = useRef<HTMLDivElement | null>(null);
   const rightImageRef = useRef<HTMLImageElement | null>(null);
-  const badgeWrapperRef = useRef<HTMLDivElement | null>(null);
+  const badgeWrapperRef = useRef<HTMLAnchorElement | null>(null);
   const sparkle1Ref = useRef<HTMLDivElement | null>(null);
   const sparkle2Ref = useRef<HTMLDivElement | null>(null);
   const glow1Ref = useRef<HTMLDivElement | null>(null);
@@ -216,10 +216,10 @@ export default function Hero() {
         className="absolute bottom-10 right-10 w-[420px] h-[420px] bg-sky-50/60 rounded-full blur-3xl pointer-events-none z-0"
       />
 
-      {/* Decorative Floating Sparkle Glyphs */}
+      {/* Decorative Floating Sparkle Glyphs - hidden on mobile to avoid text overlap */}
       <div
         ref={sparkle1Ref}
-        className="absolute top-8 left-12 text-blue-400 pointer-events-none z-0"
+        className="hidden sm:block absolute top-8 left-12 text-blue-400 pointer-events-none z-0"
       >
         <svg className="w-8 h-8 fill-current drop-shadow-sm" viewBox="0 0 24 24">
           <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
@@ -228,7 +228,7 @@ export default function Hero() {
 
       <div
         ref={sparkle2Ref}
-        className="absolute top-40 right-1/3 text-sky-300 pointer-events-none z-0"
+        className="hidden sm:block absolute top-40 right-1/3 text-sky-300 pointer-events-none z-0"
       >
         <svg className="w-6 h-6 fill-current drop-shadow-xs" viewBox="0 0 24 24">
           <path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z" />
@@ -243,14 +243,14 @@ export default function Hero() {
             <div>
               <h1
                 ref={headlineRef}
-                className="text-4xl sm:text-5xl lg:text-[54px] font-extrabold text-[#0f172a] leading-[1.14] tracking-tight perspective-[1000px]"
+                className="text-3xl sm:text-5xl lg:text-[54px] font-extrabold text-[#0f172a] leading-[1.14] tracking-tight perspective-[1000px]"
               >
                 <span className="hero-line-item inline-block">
                   Welcome to Smile
                 </span>{" "}
                 <span className="hero-line-item inline-flex items-center align-middle text-[#2B64EC] ml-1">
                   <svg
-                    className="w-7 h-7 sm:w-9 sm:h-9 fill-current animate-pulse"
+                    className="w-6 h-6 sm:w-9 sm:h-9 fill-current animate-pulse"
                     viewBox="0 0 24 24"
                   >
                     <path d="M12 0L14.7 9.3L24 12L14.7 14.7L12 24L9.3 14.7L0 12L9.3 9.3L12 0Z" />
@@ -264,7 +264,7 @@ export default function Hero() {
 
               <p
                 ref={paragraphRef}
-                className="mt-5 text-slate-500 text-[15px] sm:text-base leading-relaxed max-w-lg font-normal"
+                className="mt-4 sm:mt-5 text-slate-500 text-sm sm:text-base leading-relaxed max-w-lg font-normal"
               >
                 Our experienced dental team offers a blend of extensive knowledge and
                 personalized professional care tailored to your specific needs.
@@ -273,18 +273,18 @@ export default function Hero() {
               {/* Action Buttons */}
               <div
                 ref={buttonsRef}
-                className="mt-8 flex flex-wrap items-center gap-4"
+                className="mt-6 sm:mt-8 grid grid-cols-2 sm:flex sm:flex-row items-center gap-2.5 sm:gap-4"
               >
                 <Link
-                  href="#services"
-                  className="group relative bg-[#2B64EC] hover:bg-[#1e52d1] active:scale-[0.98] text-white font-medium text-sm sm:text-[15px] px-8 py-3.5 rounded-full shadow-md shadow-blue-500/25 hover:shadow-lg hover:shadow-blue-500/35 transition-all duration-200 inline-flex items-center justify-center overflow-hidden"
+                  href="/services"
+                  className="group relative bg-[#2B64EC] hover:bg-[#1e52d1] active:scale-[0.98] text-white font-semibold text-xs sm:text-[15px] px-3 sm:px-8 py-3.5 rounded-full shadow-md shadow-blue-500/25 hover:shadow-lg hover:shadow-blue-500/35 transition-all duration-200 inline-flex items-center justify-center overflow-hidden text-center"
                 >
                   <span className="relative z-10">View Services</span>
                   <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
                 </Link>
                 <Link
-                  href="#schedule"
-                  className="group border-2 border-[#00B4D8] text-[#00B4D8] hover:bg-sky-50 active:scale-[0.98] font-medium text-sm sm:text-[15px] px-8 py-3.5 rounded-full transition-all duration-200 inline-flex items-center justify-center"
+                  href="/appointment"
+                  className="group border-2 border-[#00B4D8] text-[#00B4D8] hover:bg-sky-50 active:scale-[0.98] font-semibold text-xs sm:text-[15px] px-3 sm:px-8 py-3.5 rounded-full transition-all duration-200 inline-flex items-center justify-center text-center"
                 >
                   <span className="group-hover:translate-x-0.5 transition-transform duration-200">
                     Schedule a Call
@@ -296,10 +296,10 @@ export default function Hero() {
             {/* Bottom-Left Image Container with curved organic cutout */}
             <div
               ref={leftImageRef}
-              className="mt-10 sm:mt-12 max-w-[350px] relative filter drop-shadow-md"
+              className="mt-8 sm:mt-12 max-w-[280px] sm:max-w-[350px] relative filter drop-shadow-md hidden sm:block"
             >
               <div
-                className="relative w-full h-[270px] sm:h-[300px] overflow-hidden bg-slate-100 group transition-transform duration-300 hover:scale-[1.02]"
+                className="relative w-full h-[220px] sm:h-[300px] overflow-hidden bg-slate-100 group transition-transform duration-300 hover:scale-[1.02]"
                 style={{ clipPath: "url(#heroLeftClip)" }}
               >
                 <img
@@ -312,7 +312,7 @@ export default function Hero() {
           </div>
 
           {/* Right Column: Main Hero Image and Circular Badge */}
-          <div className="lg:col-span-6 flex flex-col justify-end items-center lg:items-end h-full">
+          <div className="lg:col-span-6 flex flex-col justify-end items-center lg:items-end h-full mt-4 lg:mt-0">
             <div
               ref={rightImageContainerRef}
               className="relative w-full max-w-[540px] transform-gpu perspective-[1200px]"
@@ -323,17 +323,19 @@ export default function Hero() {
                   ref={rightImageRef}
                   src="/hero-img.png"
                   alt="Smile Bright Dental Care Hero"
-                  className="w-full h-auto object-contain max-h-[520px] sm:max-h-[580px] lg:max-h-[620px] drop-shadow-xl"
+                  className="w-full h-auto object-contain max-h-[380px] sm:max-h-[580px] lg:max-h-[620px] drop-shadow-xl"
                 />
               </div>
 
-              {/* Floating Circular Badge on bottom-right */}
-              <div
+              {/* Floating Circular Badge on bottom-right - hidden on mobile */}
+              <Link
+                href="/#about"
+                aria-label="Learn about Dr. Shelley Robinson"
                 ref={badgeWrapperRef}
-                className="absolute -bottom-4 -right-2 sm:-bottom-6 sm:-right-4 z-20 cursor-pointer"
+                className="hidden sm:block absolute -bottom-6 -right-4 z-20 cursor-pointer"
               >
-                <CircularBadge className="hover:scale-105 transition-transform duration-300 shadow-2xl" />
-              </div>
+                <CircularBadge className="hover:scale-105 transition-transform duration-300 shadow-xl" />
+              </Link>
             </div>
           </div>
         </div>

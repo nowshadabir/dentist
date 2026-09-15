@@ -141,11 +141,11 @@ export default function DentistShowcase() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column: Dentist Portrait with Organic Curved Shape */}
           <div ref={leftColRef} className="lg:col-span-5 flex justify-center perspective-[1000px]">
-            <div ref={imgBoxRef} className="relative w-full max-w-[440px] transform-gpu">
+            <div ref={imgBoxRef} className="relative w-full max-w-[400px] sm:max-w-[440px] transform-gpu">
               {/* Organic Curved Image Container */}
               <div className="relative filter drop-shadow-xl">
                 <div
-                  className="relative w-full h-[470px] sm:h-[530px] overflow-hidden bg-slate-100 group transition-transform duration-300 hover:scale-[1.01]"
+                  className="relative w-full h-[380px] sm:h-[530px] overflow-hidden bg-slate-100 group transition-transform duration-300 hover:scale-[1.01]"
                   style={{ clipPath: "url(#dentistClip)" }}
                 >
                   <img
@@ -158,10 +158,10 @@ export default function DentistShowcase() {
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-60" />
 
                   {/* Doctor badge at bottom of photo */}
-                  <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md px-4 py-3 rounded-2xl shadow-lg border border-slate-100 flex items-center justify-between">
+                  <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 bg-white/95 backdrop-blur-md px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-2xl shadow-lg border border-slate-100 flex items-center justify-between">
                     <div>
                       <h4 className="text-xs font-bold text-slate-900">Dr. Shelley Robinson</h4>
-                      <p className="text-[11px] text-blue-600 font-medium">BDS, FCPS (Surgery), MS</p>
+                      <p className="text-[10px] sm:text-[11px] text-blue-600 font-medium">BDS, FCPS (Surgery), MS</p>
                     </div>
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                   </div>
@@ -171,14 +171,14 @@ export default function DentistShowcase() {
               {/* Floating Patient Trust Rating Pill */}
               <div
                 ref={ratingPillRef}
-                className="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 bg-white px-4 py-2.5 rounded-full shadow-xl border border-slate-100 flex items-center gap-2 z-20 hover:scale-105 transition-transform duration-200"
+                className="absolute -top-3 right-2 sm:-top-4 sm:-right-4 bg-white px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full shadow-xl border border-slate-100 flex items-center gap-1.5 sm:gap-2 z-20 hover:scale-105 transition-transform duration-200"
               >
                 <div className="flex text-amber-400">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-current" />
+                    <Star key={i} className="w-3 sm:w-3.5 h-3 sm:h-3.5 fill-current" />
                   ))}
                 </div>
-                <span className="text-xs font-bold text-slate-800">5.0 (450+ Reviews)</span>
+                <span className="text-[11px] sm:text-xs font-bold text-slate-800">5.0 (450+ Reviews)</span>
               </div>
             </div>
           </div>
@@ -190,10 +190,10 @@ export default function DentistShowcase() {
               <span className="dentist-header-el text-xs uppercase font-bold tracking-widest text-[#2B64EC] block mb-2">
                 Solo Practitioner & Surgeon
               </span>
-              <h2 className="dentist-header-el text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.12]">
+              <h2 className="dentist-header-el text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.15]">
                 Dr. Shelley Robinson
               </h2>
-              <p className="dentist-header-el text-base sm:text-lg font-medium text-slate-600 mt-2">
+              <p className="dentist-header-el text-sm sm:text-lg font-medium text-slate-600 mt-2">
                 Senior Consultant — Dhaka Medical College & Hospital
               </p>
             </div>
@@ -201,37 +201,37 @@ export default function DentistShowcase() {
             {/* Minimalist Academic Credentials Strip */}
             <div
               ref={credentialsRef}
-              className="mt-6 pt-6 border-t border-slate-100 grid grid-cols-2 sm:grid-cols-4 gap-4"
+              className="mt-6 pt-6 border-t border-slate-100 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4"
             >
-              <div className="cred-box bg-slate-50/80 p-3.5 rounded-2xl border border-slate-100 hover:border-blue-200 transition-colors">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
+              <div className="cred-box bg-slate-50/80 p-3 sm:p-3.5 rounded-2xl border border-slate-100 hover:border-blue-200 transition-colors">
+                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
                   Primary & Cadre
                 </span>
-                <span className="text-sm font-extrabold text-slate-900 block mt-0.5">
+                <span className="text-xs sm:text-sm font-extrabold text-slate-900 block mt-0.5">
                   BDS, BCS (Health)
                 </span>
               </div>
-              <div className="cred-box bg-slate-50/80 p-3.5 rounded-2xl border border-slate-100 hover:border-blue-200 transition-colors">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
+              <div className="cred-box bg-slate-50/80 p-3 sm:p-3.5 rounded-2xl border border-slate-100 hover:border-blue-200 transition-colors">
+                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
                   Fellowship
                 </span>
-                <span className="text-sm font-extrabold text-slate-900 block mt-0.5">
+                <span className="text-xs sm:text-sm font-extrabold text-slate-900 block mt-0.5">
                   FCPS (Surgery)
                 </span>
               </div>
-              <div className="cred-box bg-slate-50/80 p-3.5 rounded-2xl border border-slate-100 hover:border-blue-200 transition-colors">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
+              <div className="cred-box bg-slate-50/80 p-3 sm:p-3.5 rounded-2xl border border-slate-100 hover:border-blue-200 transition-colors">
+                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
                   Postgraduate
                 </span>
-                <span className="text-sm font-extrabold text-slate-900 block mt-0.5">
+                <span className="text-xs sm:text-sm font-extrabold text-slate-900 block mt-0.5">
                   MS (Maxillofacial)
                 </span>
               </div>
-              <div className="cred-box bg-slate-50/80 p-3.5 rounded-2xl border border-slate-100 hover:border-blue-200 transition-colors">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
+              <div className="cred-box bg-slate-50/80 p-3 sm:p-3.5 rounded-2xl border border-slate-100 hover:border-blue-200 transition-colors">
+                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-400 block">
                   Institution
                 </span>
-                <span className="text-sm font-extrabold text-slate-900 block mt-0.5">
+                <span className="text-xs sm:text-sm font-extrabold text-slate-900 block mt-0.5">
                   Dhaka Med College
                 </span>
               </div>
@@ -239,7 +239,7 @@ export default function DentistShowcase() {
 
             {/* Biography & Mission */}
             <p className="dentist-header-el mt-6 text-slate-600 text-sm sm:text-base leading-relaxed">
-              At Smile Bright, dental care isn't a rushed assembly line. Dr. Robinson combines hospital-grade surgical expertise with an unhurried, gentle approach — delivering precision dental restorations, pain-free treatments, and personalized smile care.
+              At Smile Bright, dental care isn&apos;t a rushed assembly line. Dr. Robinson combines hospital-grade surgical expertise with an unhurried, gentle approach — delivering precision dental restorations, pain-free treatments, and personalized smile care.
             </p>
 
             {/* Core Practice Highlights (Clean List) */}
@@ -281,23 +281,23 @@ export default function DentistShowcase() {
             {/* Personal Quote */}
             <blockquote
               ref={quoteRef}
-              className="mt-8 pl-4 border-l-2 border-[#2B64EC] bg-blue-50/40 py-2.5 pr-4 rounded-r-xl text-slate-700 text-sm italic leading-relaxed"
+              className="mt-8 pl-4 border-l-2 border-[#2B64EC] bg-blue-50/40 py-2.5 pr-4 rounded-r-xl text-slate-700 text-xs sm:text-sm italic leading-relaxed"
             >
               &ldquo;I believe the best dentistry happens when patients feel heard, respected, and completely at ease in the chair.&rdquo;
             </blockquote>
 
             {/* Action Buttons */}
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <Link
-                href="#schedule"
-                className="group bg-slate-900 hover:bg-slate-800 active:scale-[0.98] text-white font-medium text-sm sm:text-[15px] px-8 py-3.5 rounded-full shadow-md hover:shadow-lg transition-all duration-200 inline-flex items-center justify-center gap-2"
+                href="/appointment"
+                className="group bg-slate-900 hover:bg-slate-800 active:scale-[0.98] text-white font-medium text-sm sm:text-[15px] px-8 py-3.5 rounded-full shadow-md hover:shadow-lg transition-all duration-200 inline-flex items-center justify-center gap-2 text-center"
               >
                 <span>Book a Consultation</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
               </Link>
               <Link
-                href="#services"
-                className="border border-slate-200 text-slate-700 hover:bg-slate-50 active:scale-[0.98] font-medium text-sm sm:text-[15px] px-7 py-3.5 rounded-full transition-all duration-200 inline-flex items-center justify-center"
+                href="/services"
+                className="border border-slate-200 text-slate-700 hover:bg-slate-50 active:scale-[0.98] font-medium text-sm sm:text-[15px] px-7 py-3.5 rounded-full transition-all duration-200 inline-flex items-center justify-center text-center"
               >
                 Explore Treatments
               </Link>

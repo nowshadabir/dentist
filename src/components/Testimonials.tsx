@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import { Star, CheckCircle2, Quote, ThumbsUp, MessageSquare, Award, Users, HeartHandshake } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -245,38 +246,38 @@ export default function Testimonials() {
         {/* Section Header */}
         <div
           ref={headerRef}
-          className="flex flex-col md:flex-row md:items-end justify-between mb-12 lg:mb-16 gap-6"
+          className="flex flex-col md:flex-row md:items-end justify-between mb-10 lg:mb-16 gap-6"
         >
           <div>
             <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200/60 text-[#2B64EC] px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase">
               <MessageSquare className="w-3.5 h-3.5" />
               Patient Stories & Reviews
             </div>
-            <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0f172a] tracking-tight leading-[1.18]">
+            <h2 className="mt-3 text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#0f172a] tracking-tight leading-[1.18]">
               Trusted Smiles, <br />
               <span className="text-[#2B64EC]">Real Experiences</span>
             </h2>
-            <p className="mt-3 text-slate-500 text-sm sm:text-base max-w-xl font-normal leading-relaxed">
+            <p className="mt-2 text-slate-500 text-xs sm:text-base max-w-xl font-normal leading-relaxed">
               Read how our dedicated, patient-first approach transforms smiles and restores confidence every single day.
             </p>
           </div>
 
           {/* Google Overall Rating Badge */}
-          <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-md flex items-center gap-5 shrink-0 self-start md:self-auto hover:shadow-lg transition-shadow">
-            <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-[#2B64EC] font-bold text-lg shadow-inner">
+          <div className="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-xs flex items-center gap-4 sm:gap-5 w-full sm:w-auto hover:shadow-md transition-shadow">
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-blue-50 flex items-center justify-center text-[#2B64EC] font-bold text-base sm:text-lg shrink-0">
               5.0
             </div>
             <div>
-              <div className="flex items-center gap-1 text-amber-400 mb-1">
+              <div className="flex items-center gap-1 text-amber-400 mb-0.5">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-current" />
+                  <Star key={i} className="w-3.5 sm:w-4 h-3.5 sm:h-4 fill-current" />
                 ))}
               </div>
               <div className="text-xs font-semibold text-slate-800 flex items-center gap-1.5">
                 <span>Google Verified Reviews</span>
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
               </div>
-              <p className="text-[11px] text-slate-400 mt-0.5">Based on 450+ patient ratings</p>
+              <p className="text-[10px] sm:text-[11px] text-slate-400 mt-0.5">Based on 450+ patient ratings</p>
             </div>
           </div>
         </div>
@@ -284,63 +285,63 @@ export default function Testimonials() {
         {/* Animated Clinical Metrics Strip */}
         <div
           ref={statsContainerRef}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-10"
         >
-          <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs hover:border-blue-200 transition-colors">
-            <div className="flex items-center justify-between text-slate-400 mb-2">
-              <span className="text-xs font-semibold uppercase tracking-wider">Patient Trust</span>
-              <Users className="w-4 h-4 text-blue-600" />
+          <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs hover:border-blue-200 transition-colors">
+            <div className="flex items-center justify-between text-slate-400 mb-1.5">
+              <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider">Patient Trust</span>
+              <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600" />
             </div>
-            <div className="stat-value text-2xl sm:text-3xl font-extrabold text-slate-900" data-target="450" data-suffix="+">
+            <div className="stat-value text-xl sm:text-3xl font-extrabold text-slate-900" data-target="450" data-suffix="+">
               0+
             </div>
-            <p className="text-xs text-slate-500 mt-1">Verified 5-Star Reviews</p>
+            <p className="text-[11px] text-slate-500 mt-0.5">Verified Reviews</p>
           </div>
 
-          <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs hover:border-blue-200 transition-colors">
-            <div className="flex items-center justify-between text-slate-400 mb-2">
-              <span className="text-xs font-semibold uppercase tracking-wider">Success Rate</span>
-              <Award className="w-4 h-4 text-emerald-600" />
+          <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs hover:border-blue-200 transition-colors">
+            <div className="flex items-center justify-between text-slate-400 mb-1.5">
+              <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider">Success Rate</span>
+              <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600" />
             </div>
-            <div className="stat-value text-2xl sm:text-3xl font-extrabold text-slate-900" data-target="99.8" data-suffix="%">
+            <div className="stat-value text-xl sm:text-3xl font-extrabold text-slate-900" data-target="99.8" data-suffix="%">
               0%
             </div>
-            <p className="text-xs text-slate-500 mt-1">Procedure Precision</p>
+            <p className="text-[11px] text-slate-500 mt-0.5">Procedure Precision</p>
           </div>
 
-          <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs hover:border-blue-200 transition-colors">
-            <div className="flex items-center justify-between text-slate-400 mb-2">
-              <span className="text-xs font-semibold uppercase tracking-wider">Experience</span>
-              <HeartHandshake className="w-4 h-4 text-amber-500" />
+          <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs hover:border-blue-200 transition-colors">
+            <div className="flex items-center justify-between text-slate-400 mb-1.5">
+              <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider">Experience</span>
+              <HeartHandshake className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-500" />
             </div>
-            <div className="stat-value text-2xl sm:text-3xl font-extrabold text-slate-900" data-target="12" data-suffix="+ Years">
+            <div className="stat-value text-xl sm:text-3xl font-extrabold text-slate-900" data-target="12" data-suffix="+ Years">
               0 Years
             </div>
-            <p className="text-xs text-slate-500 mt-1">Surgical & Clinical Practice</p>
+            <p className="text-[11px] text-slate-500 mt-0.5">Surgical Practice</p>
           </div>
 
-          <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs hover:border-blue-200 transition-colors">
-            <div className="flex items-center justify-between text-slate-400 mb-2">
-              <span className="text-xs font-semibold uppercase tracking-wider">Doctor Dedication</span>
-              <CheckCircle2 className="w-4 h-4 text-purple-600" />
+          <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-xs hover:border-blue-200 transition-colors">
+            <div className="flex items-center justify-between text-slate-400 mb-1.5">
+              <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wider">Dedication</span>
+              <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-purple-600" />
             </div>
-            <div className="stat-value text-2xl sm:text-3xl font-extrabold text-slate-900" data-target="100" data-suffix="%">
+            <div className="stat-value text-xl sm:text-3xl font-extrabold text-slate-900" data-target="100" data-suffix="%">
               0%
             </div>
-            <p className="text-xs text-slate-500 mt-1">Direct One-on-One Care</p>
+            <p className="text-[11px] text-slate-500 mt-0.5">One-on-One Care</p>
           </div>
         </div>
 
-        {/* Category Filter Pills */}
-        <div className="flex flex-wrap items-center gap-2.5 mb-10">
+        {/* Category Filter Pills (Swipeable on mobile) */}
+        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1 mb-8 sm:flex-wrap">
           {CATEGORIES.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
+              className={`px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-150 cursor-pointer shrink-0 ${
                 activeCategory === cat.id
-                  ? "bg-[#2B64EC] text-white shadow-md shadow-blue-500/25 scale-105"
-                  : "bg-white text-slate-600 hover:text-slate-900 border border-slate-200/80 hover:border-slate-300"
+                  ? "bg-[#2B64EC] text-white shadow-xs"
+                  : "bg-white text-slate-600 hover:text-slate-900 border border-slate-200/80"
               }`}
             >
               {cat.label}
@@ -432,12 +433,12 @@ export default function Testimonials() {
             </p>
           </div>
           <div className="flex items-center gap-3 shrink-0 relative z-10">
-            <a
-              href="#schedule"
+            <Link
+              href="/appointment"
               className="bg-white text-[#2B64EC] hover:bg-blue-50 active:scale-[0.98] font-semibold text-sm px-6 py-3 rounded-full transition-all duration-200 shadow-md hover:shadow-lg"
             >
               Book an Appointment
-            </a>
+            </Link>
           </div>
         </div>
       </div>
