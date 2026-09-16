@@ -15,15 +15,26 @@ export default function SmoothScrollProvider({
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    // Initialize Lenis for butter-smooth scrolling
+    // Only initialize virtual smooth scroll on devices with mouse/trackpad (pointer: fine)
+    // Mobile touch devices get native high-refresh rate momentum scrolling
+    const isTouchDevice =
+      typeof window !== "undefined" &&
+      window.matchMedia("(pointer: coarse)").matches;
+
+    if (isTouchDevice) {
+      // For mobile devices, enable native smooth scrolling and clean up GSAP ScrollTrigger updates
+      ScrollTrigger.refresh();
+      return;
+    }
+
+    // Initialize Lenis for butter-smooth desktop scrolling
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 1.5,
+      wheelMultiplier: 0.9,
       infinite: false,
     });
 
@@ -49,7 +60,7 @@ export default function SmoothScrollProvider({
           e.preventDefault();
           lenis.scrollTo(targetElement as HTMLElement, {
             offset: -80,
-            duration: 1.4,
+            duration: 1.2,
           });
         }
       }

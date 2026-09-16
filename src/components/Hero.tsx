@@ -273,18 +273,18 @@ export default function Hero() {
               {/* Action Buttons */}
               <div
                 ref={buttonsRef}
-                className="mt-6 sm:mt-8 grid grid-cols-2 sm:flex sm:flex-row items-center gap-2.5 sm:gap-4"
+                className="mt-6 sm:mt-8 flex flex-col xs:flex-row sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4"
               >
                 <Link
                   href="/services"
-                  className="group relative bg-[#2B64EC] hover:bg-[#1e52d1] active:scale-[0.98] text-white font-semibold text-xs sm:text-[15px] px-3 sm:px-8 py-3.5 rounded-full shadow-md shadow-blue-500/25 hover:shadow-lg hover:shadow-blue-500/35 transition-all duration-200 inline-flex items-center justify-center overflow-hidden text-center"
+                  className="group relative bg-[#2B64EC] hover:bg-[#1e52d1] active:scale-[0.98] text-white font-semibold text-sm sm:text-[15px] px-6 sm:px-8 py-3.5 rounded-full shadow-md shadow-blue-500/25 hover:shadow-lg hover:shadow-blue-500/35 transition-all duration-200 inline-flex items-center justify-center overflow-hidden text-center cursor-pointer"
                 >
                   <span className="relative z-10">View Services</span>
                   <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
                 </Link>
                 <Link
                   href="/appointment"
-                  className="group border-2 border-[#00B4D8] text-[#00B4D8] hover:bg-sky-50 active:scale-[0.98] font-semibold text-xs sm:text-[15px] px-3 sm:px-8 py-3.5 rounded-full transition-all duration-200 inline-flex items-center justify-center text-center"
+                  className="group border-2 border-[#00B4D8] text-[#00B4D8] hover:bg-sky-50 active:scale-[0.98] font-semibold text-sm sm:text-[15px] px-6 sm:px-8 py-3.5 rounded-full transition-all duration-200 inline-flex items-center justify-center text-center cursor-pointer"
                 >
                   <span className="group-hover:translate-x-0.5 transition-transform duration-200">
                     Schedule a Call
